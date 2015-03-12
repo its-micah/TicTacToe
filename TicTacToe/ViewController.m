@@ -35,7 +35,7 @@
 
 
 
-- (void)findLabelUsingPoint:(CGPoint)Point{
+- (void)findLabelUsingPoint:(CGPoint)point{
 
  
 
@@ -48,7 +48,7 @@
 
 - (IBAction)onLabelTapped:(UIGestureRecognizer *)gestureRecognizer
 {
-
+    CGPoint tapped = [gestureRecognizer locationInView:[self.view]];
     gestureRecognizer.delegate = self;
     if (gestureRecognizer.state == UIGestureRecognizerStateRecognized) {
         if (CGRectContainsPoint(self.labelOne.frame, self.labelOne.center)) {

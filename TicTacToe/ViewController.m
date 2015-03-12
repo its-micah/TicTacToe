@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *labelOne;
 @property (weak, nonatomic) IBOutlet UILabel *labelTwo;
 @property (weak, nonatomic) IBOutlet UILabel *labelThree;
@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelEight;
 @property (weak, nonatomic) IBOutlet UILabel *labelNine;
 @property (weak, nonatomic) IBOutlet UILabel *whichPlayerLabel;
+@property CGPoint point;
 
 
 @end
@@ -30,27 +31,18 @@
 
 }
 
+
+
 - (void)findLabelUsingPoint:(CGPoint)point{
+    
 
-    CGPoint point = self.
-
-    //    CGPoint labelOnePoint = self.labelOne.center;
-//    CGPoint labelTwoPoint = self.labelTwo.center;
-//    CGPoint labelThreePoint = self.labelThree.center;
-//    CGPoint labelFourPoint = self.labelFour.center;
-//    CGPoint labelFivePoint = self.labelFive.center;
-//    CGPoint labelSixPoint = self.labelSix.center;
-//    CGPoint labelSevenPoint = self.labelSeven.center;
-//    CGPoint labelEightPoint = self.labelEight.center;
-//    CGPoint labelNinePoint = self.labelNine.center;
 }
 
 - (IBAction)onLabelTapped:(UIGestureRecognizer *)gestureRecognizer
 {
-    if (<#condition#>) {
-        <#statements#>
-    } else if {
-        <#statements#>
+    if (gestureRecognizer.state == UIGestureRecognizerStateRecognized) {
+        [self findLabelUsingPoint:self.labelOne.center];
+        self.labelOne.text = @"x";
     }
 }
 

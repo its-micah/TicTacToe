@@ -36,13 +36,15 @@
 
 
 - (void)findLabelUsingPoint:(CGPoint)Point{
+    CGPoint onePoint = [CGPointMake(<#CGFloat x#>, <#CGFloat y#>) ]
+//if we get cgpoint of touched location, if the tapped location cgpoint is equal to the center of the label than action
 
-
-
+   
 }
 
 - (IBAction)onLabelTapped:(UIGestureRecognizer *)gestureRecognizer
 {
+
     gestureRecognizer.delegate = self;
     if (gestureRecognizer.state == UIGestureRecognizerStateRecognized) {
 

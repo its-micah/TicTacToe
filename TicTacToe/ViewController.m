@@ -30,10 +30,29 @@
 
 }
 
+- (void)findLabelUsingPoint:(CGPoint)point{
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    CGPoint point = self.
+
+    //    CGPoint labelOnePoint = self.labelOne.center;
+//    CGPoint labelTwoPoint = self.labelTwo.center;
+//    CGPoint labelThreePoint = self.labelThree.center;
+//    CGPoint labelFourPoint = self.labelFour.center;
+//    CGPoint labelFivePoint = self.labelFive.center;
+//    CGPoint labelSixPoint = self.labelSix.center;
+//    CGPoint labelSevenPoint = self.labelSeven.center;
+//    CGPoint labelEightPoint = self.labelEight.center;
+//    CGPoint labelNinePoint = self.labelNine.center;
 }
+
+- (IBAction)onLabelTapped:(UIGestureRecognizer *)gestureRecognizer
+{
+    if (<#condition#>) {
+        <#statements#>
+    } else if {
+        <#statements#>
+    }
+}
+
 
 @end

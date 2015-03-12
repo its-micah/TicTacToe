@@ -22,6 +22,7 @@
 @property UILabel *pickedLabel;
 @property NSArray *labelArray;
 @property BOOL player;
+@property NSString *winner;
 
 
 @end
@@ -60,20 +61,19 @@
 }
 
 
-
-
 - (void)updatePlayerInfo {
 
     if ((self.player == YES)) {
-        self.pickedLabel.text = @"x";
+        self.pickedLabel.text = @"X";
         self.pickedLabel.textColor = [UIColor blueColor];
+        self.whichPlayerLabel.text = @"O";
         self.player = NO;
     } else {
         self.pickedLabel.text = @"O";
         self.pickedLabel.textColor = [UIColor redColor];
+        self.whichPlayerLabel.text = @"X";
         self.player = YES;
     }
-
 }
 
 
@@ -82,13 +82,16 @@
     if (gestureRecognizer.state == UIGestureRecognizerStateRecognized) {
         [self findLabelUsingPoint:[gestureRecognizer locationInView:self.view]];
         [self updatePlayerInfo];
-
-
-
-
-
-
+        [self whoWon];
     }
+}
+
+- (NSString *)whoWon {
+    if ([self.labelOne.text isEqualToString:self.labelTwo.text]) {
+        self.winner = self.labelTwo.text;
+    }
+    NSLog(@"%@", self.winner);
+    return self.winner;
 }
 
 

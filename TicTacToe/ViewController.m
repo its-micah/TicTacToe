@@ -36,7 +36,11 @@
 
 
 - (void)findLabelUsingPoint:(CGPoint)Point{
-    CGPoint onePoint = [CGPointMake(<#CGFloat x#>, <#CGFloat y#>) ]
+
+ 
+
+    CGRectContainsPoint(self.labelOne.frame, self.labelOne.center);
+
 //if we get cgpoint of touched location, if the tapped location cgpoint is equal to the center of the label than action
 
    
@@ -47,6 +51,10 @@
 
     gestureRecognizer.delegate = self;
     if (gestureRecognizer.state == UIGestureRecognizerStateRecognized) {
+        if (CGRectContainsPoint(self.labelOne.frame, self.labelOne.center)) {
+            self.labelOne.text = @"x";
+        }
+
 
     }
 }

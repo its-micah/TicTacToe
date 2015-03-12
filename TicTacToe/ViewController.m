@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelNine;
 @property (weak, nonatomic) IBOutlet UILabel *whichPlayerLabel;
 @property CGPoint point;
+@property NSArray *labelArray;
 
 
 @end
@@ -28,15 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    CGPoint oneCenter = self.labelOne.center;
-//    CGPoint twoCenter = self.labelTwo.center;
-//    CGPoint threeCenter = self.labelThree.center;
-//    CGPoint fourCenter = self.labelFour.center;
-//    CGPoint fiveCenter = self.labelFive.center;
-//    CGPoint sixCenter = self.labelSix.center;
-//    CGPoint sevenCenter = self.labelSeven.center;
-//    CGPoint eightCenter = self.labelEight.center;
-//    CGPoint nineCenter = self.labelNine.center;
+    self.labelArray = [NSArray arrayWithObjects:self.labelOne, self.labelTwo, self.labelThree, self.labelFour, self.labelFive, self.labelSix, self.labelSeven, self.labelEight, self.labelNine, nil];
 
 }
 
@@ -44,25 +37,15 @@
 
 - (void)findLabelUsingPoint:(CGPoint)Point{
 
-    CGPoint oneCenter = self.labelOne.center;
-    CGPoint twoCenter = self.labelTwo.center;
-    CGPoint threeCenter = self.labelThree.center;
-    CGPoint fourCenter = self.labelFour.center;
-    CGPoint fiveCenter = self.labelFive.center;
-    CGPoint sixCenter = self.labelSix.center;
-    CGPoint sevenCenter = self.labelSeven.center;
-    CGPoint eightCenter = self.labelEight.center;
-    CGPoint nineCenter = self.labelNine.center;
+
 
 }
 
 - (IBAction)onLabelTapped:(UIGestureRecognizer *)gestureRecognizer
 {
-   // CGPoint tap = [gestureRecognizer locationInView:self.labelOne.frame];
-
+    gestureRecognizer.delegate = self;
     if (gestureRecognizer.state == UIGestureRecognizerStateRecognized) {
-        [self findLabelUsingPoint:self.labelOne.center];
-        self.labelOne.text = @"x";
+
     }
 }
 

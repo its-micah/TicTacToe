@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *whichPlayerLabel;
 @property UILabel *pickedLabel;
 @property NSArray *labelArray;
-@property NSInteger player;
+@property BOOL player;
 
 
 @end
@@ -30,8 +30,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.labelArray = [NSArray arrayWithObjects:self.labelOne, self.labelTwo, self.labelThree, self.labelFour, self.labelFive, self.labelSix, self.labelSeven, self.labelEight, self.labelNine, nil];
-    self.player = 0;
+    //self.labelArray = [NSArray arrayWithObjects:self.labelOne, self.labelTwo, self.labelThree, self.labelFour, self.labelFive, self.labelSix, self.labelSeven, self.labelEight, self.labelNine, nil];
+    self.player = YES;
 }
 
 
@@ -64,24 +64,26 @@
 
 - (void)updatePlayerInfo {
 
-    if (self.player == 0) {
+    if ((self.player == YES)) {
         self.pickedLabel.text = @"x";
         self.pickedLabel.textColor = [UIColor blueColor];
-    }
-    if (self.player == 1) {
+        self.player = NO;
+    } else {
         self.pickedLabel.text = @"O";
         self.pickedLabel.textColor = [UIColor redColor];
+        self.player = YES;
     }
 
 }
 
 
 - (IBAction)onLabelTapped:(UIGestureRecognizer *)gestureRecognizer {
-    //CGPoint tapped = [gestureRecognizer locationInView:self.view];
     gestureRecognizer.delegate = self;
     if (gestureRecognizer.state == UIGestureRecognizerStateRecognized) {
         [self findLabelUsingPoint:[gestureRecognizer locationInView:self.view]];
         [self updatePlayerInfo];
+
+
 
 
 

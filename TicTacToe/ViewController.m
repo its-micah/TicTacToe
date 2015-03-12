@@ -28,18 +28,38 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    CGPoint oneCenter = self.labelOne.center;
+//    CGPoint twoCenter = self.labelTwo.center;
+//    CGPoint threeCenter = self.labelThree.center;
+//    CGPoint fourCenter = self.labelFour.center;
+//    CGPoint fiveCenter = self.labelFive.center;
+//    CGPoint sixCenter = self.labelSix.center;
+//    CGPoint sevenCenter = self.labelSeven.center;
+//    CGPoint eightCenter = self.labelEight.center;
+//    CGPoint nineCenter = self.labelNine.center;
 
 }
 
 
 
-- (void)findLabelUsingPoint:(CGPoint)point{
-    
+- (void)findLabelUsingPoint:(CGPoint)Point{
+
+    CGPoint oneCenter = self.labelOne.center;
+    CGPoint twoCenter = self.labelTwo.center;
+    CGPoint threeCenter = self.labelThree.center;
+    CGPoint fourCenter = self.labelFour.center;
+    CGPoint fiveCenter = self.labelFive.center;
+    CGPoint sixCenter = self.labelSix.center;
+    CGPoint sevenCenter = self.labelSeven.center;
+    CGPoint eightCenter = self.labelEight.center;
+    CGPoint nineCenter = self.labelNine.center;
 
 }
 
 - (IBAction)onLabelTapped:(UIGestureRecognizer *)gestureRecognizer
 {
+   // CGPoint tap = [gestureRecognizer locationInView:self.labelOne.frame];
+
     if (gestureRecognizer.state == UIGestureRecognizerStateRecognized) {
         [self findLabelUsingPoint:self.labelOne.center];
         self.labelOne.text = @"x";

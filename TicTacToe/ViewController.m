@@ -24,6 +24,8 @@
 @property BOOL player;
 @property NSString *winner;
 @property UIAlertView *alertView;
+@property CGPoint originalCenter;
+@property CGPoint labelFrameCenter;
 
 
 
@@ -36,6 +38,7 @@
     //self.labelArray = [NSArray arrayWithObjects:self.labelOne, self.labelTwo, self.labelThree, self.labelFour, self.labelFive, self.labelSix, self.labelSeven, self.labelEight, self.labelNine, nil];
     self.player = YES;
     self.whichPlayerLabel.text = @"X";
+    self.originalCenter = self.whichPlayerLabel.center;
 }
 
 
@@ -123,6 +126,27 @@
         }
     }
 }
+
+- (IBAction)panHandler:(UIGestureRecognizer *)gestureRecognizer {
+    CGPoint point = [gestureRecognizer locationInView:self.view];
+    self.whichPlayerLabel.center = point;
+    if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+
+
+        if (CGRectContainsPoint(self.labelOne.frame, point)) {
+            self.whichPlayerLabel.backgroundColor = [UIColor blueColor];
+            self.whichPlayerLabel.center = self.labelOne.center;
+
+
+    } else {
+        self.whichPlayerLabel.center = self.originalCenter;
+                }
+    }
+}
+
+
+
+
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {

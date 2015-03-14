@@ -29,6 +29,7 @@
 
 
 
+
 @end
 
 @implementation ViewController
@@ -60,8 +61,9 @@
 
 }
 
+//method to set the label's location. so you can call it on any label and it will tell you what label it is
 
-- (void)findLabelUsingPoint:(CGPoint)point {
+- (CGRect)findLabelUsingPoint:(CGPoint)point {
 
     if (CGRectContainsPoint(self.labelOne.frame, point)) {
         self.pickedLabel = self.labelOne;
@@ -82,8 +84,10 @@
     } else if (CGRectContainsPoint(self.labelNine.frame, point)) {
         self.pickedLabel = self.labelNine;
     }
+    return self.pickedLabel.frame;
 }
 
+//switches between x and o
 
 - (void)updatePlayerInfo {
 
@@ -127,21 +131,48 @@
     }
 }
 
+
+
 - (IBAction)panHandler:(UIGestureRecognizer *)gestureRecognizer {
     CGPoint point = [gestureRecognizer locationInView:self.view];
+    //this sets the point being moved to wherever the user is dragging their x or o
     self.whichPlayerLabel.center = point;
+
     if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+//if this specific square contains the point that is being panned, then.
 
+        //find what label we are at according to the point where the player is
+        //  the rect is any label, we find which label by using [self findLabelUsingPoint:point];
 
-        if (CGRectContainsPoint(self.labelOne.frame, point)) {
-            self.whichPlayerLabel.backgroundColor = [UIColor blueColor];
-            self.whichPlayerLabel.center = self.labelOne.center;
+        if (CGRectContainsPoint([self findLabelUsingPoint:point], point)) {
+           [UIView animateWithDuration:.2 animations:^{
+               self.pickedLabel.text = self.whichPlayerLabel.text;}];
+               [self updatePlayerInfo];
 
+            //below sets the winner. If we don't have this than we only get an alert when the clicked label equals a win. (since we now have two different gestures we need the 'winning' logic in both gestures)
 
-    } else {
+                [self whoWon];
+               if ([self.winner isEqualToString:@"X"]) {
+                   self.alertView = [[UIAlertView alloc] initWithTitle:@"WahOO!"
+                                                               message:@"X is the winner"
+                                                              delegate:self
+                                                     cancelButtonTitle:nil
+                                                     otherButtonTitles:@"New Game", nil];
+
+                   [self.alertView show];
+               } else if ([self.winner isEqualToString:@"O"]) {
+                   self.alertView = [[UIAlertView alloc] initWithTitle:@"WahOO!"
+                                                               message:@"O is the winner"
+                                                              delegate:self
+                                                     cancelButtonTitle:nil
+                                                     otherButtonTitles:@"New Game", nil];
+                   [self.alertView show];
+                   self.whichPlayerLabel.text = @"X";
+           };
+    } else { [UIView animateWithDuration:1.0 animations:^{
         self.whichPlayerLabel.center = self.originalCenter;
-                }
-    }
+    }];}
+}
 }
 
 
